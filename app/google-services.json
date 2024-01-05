@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644211755301",
+    "project_id": "quizlet-3205a",
+    "storage_bucket": "quizlet-3205a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644211755301:android:ea10eaff04b2bc19ff32cc",
+        "android_client_info": {
+          "package_name": "com.example.quizlet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuv5hRSm6R90GsT4Q3B2E9GG3PcAeLXzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
