@@ -25,4 +25,7 @@
     <color name="color_icon_logo">#4255FF</color>
     <color name="color_icon">#57637d</color>
     <color name="text_color">#c4cdd6</color>
+    <color name="text_color_2">#58647e</color>
+    <color name="blue_button_color">#4355ff</color>
+    <color name="border_color_white_button">#e4e7ec</color>
 </resources>

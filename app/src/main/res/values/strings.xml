@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Quizlet</string>
+    <string name="rule">Bằng việc đăng ký, tôi chấp thuận Điều khoản dịch vụ và chính sách quyền riêng tư của Quizlet</string>
+    <string name="register">Đăng ký miễn phí</string>
+    <string name="login">Hoặc đăng nhập</string>
+
+    <string name="onboard_1_title">Hơn 90% học sinh sử dụng Quizlet cho biết họ đã cải thiện được điểm số.</string>
+    <string name="onboard_2_title">Tìm kiếm hàng triệu bộ thẻ ghi nhớ.</string>
+    <string name="onboard_3_title">Học bằng bốn cách khác nhau.</string>
+    <string name="onboard_4_title">Tùy chỉnh thẻ ghi nhớ theo nhu cầu của bạn.</string>
 </resources>
