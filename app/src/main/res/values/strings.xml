@@ -8,4 +8,9 @@
     <string name="onboard_2_title">Tìm kiếm hàng triệu bộ thẻ ghi nhớ.</string>
     <string name="onboard_3_title">Học bằng bốn cách khác nhau.</string>
     <string name="onboard_4_title">Tùy chỉnh thẻ ghi nhớ theo nhu cầu của bạn.</string>
+    <string name="dang_nhap_nhanh_bang">ĐĂNG NHẬP NHANH BẰNG</string>
+    <string name="hoac_dang_ki_bang_email">HOẶC ĐĂNG KÝ BẰNG EMAIL</string>
+    <string name="ngay_sinh">NGÀY SINH</string>
+    <string name="email_cua_bo_me">EMAIL CỦA BỐ MẸ</string>
+    <string name="mat_khau">MẬT KHẨU</string>
 </resources>
