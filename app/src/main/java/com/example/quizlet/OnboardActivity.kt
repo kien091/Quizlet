@@ -1,6 +1,7 @@
 package com.example.quizlet
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,14 @@ class OnboardActivity : AppCompatActivity() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         binding.indicator.setViewPager(binding.viewPager)
+
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
     }
 
     // init data for viewpager
