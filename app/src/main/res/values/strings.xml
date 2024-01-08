@@ -13,4 +13,11 @@
     <string name="ngay_sinh">NGÀY SINH</string>
     <string name="email_cua_bo_me">EMAIL CỦA BỐ MẸ</string>
     <string name="mat_khau">MẬT KHẨU</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="hoac_dang_nhap_bang_email_cua_bạn">HOẶC ĐĂNG NHẬP BẰNG EMAIL CỦA BẠN</string>
+    <string name="nhap_email_hoac_ten_nguoi_dung_cua_ban">Nhập email hoặc tên người dùng của bạn</string>
+    <string name="email_hoac_ten_nguoi_dung">EMAIL HOẶC TÊN NGƯỜI DÙNG</string>
+    <string name="nhap_mat_khau_cua_ban">Nhập mật khẩu của bạn</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="quen_ten_nguoi_dung_hoac_mat_khau">Quên tên người dùng hoặc mật khẩu?</string>
 </resources>
