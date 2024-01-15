@@ -7,14 +7,14 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import com.example.flashcardapplication.models.Topic
+import com.example.flashcardapplication.models.TopicWithFolders
+import com.example.flashcardapplication.models.TopicWithVocabularies
 
 @Dao
 interface TopicDao {
-    @Transaction
     @Query("SELECT * FROM topic")
     fun getAllTopics(): List<Topic>
 
-    @Transaction
     @Query("SELECT * FROM topic WHERE id = :id")
     fun getTopicById(id: Int): Topic
 
@@ -49,4 +49,11 @@ interface TopicDao {
     @Transaction
     @Query("DELETE FROM topic WHERE id = :id")
     fun deleteTopicById(id: Int)
+
+    @Query("SELECT * FROM topic")
+    fun getTopicsWithFolders(): List<TopicWithFolders>
+
+    @Transaction
+    @Query("SELECT * FROM topic WHERE id = :topicId")
+    fun getTopicWithVocabularies(topicId: Int): TopicWithVocabularies
 }

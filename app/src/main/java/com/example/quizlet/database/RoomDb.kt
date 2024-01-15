@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.flashcardapplication.models.Topic
+import com.example.quizlet.dao.FolderDao
+import com.example.quizlet.dao.TopicDao
+import com.example.quizlet.dao.VocabularyDao
 import com.example.quizlet.models.Folder
 import com.example.quizlet.models.TopicFolderCrossRef
 import com.example.quizlet.models.Vocabulary
@@ -17,7 +20,9 @@ import com.example.quizlet.models.Vocabulary
     version = 1,
     exportSchema = false)
 abstract class RoomDb : RoomDatabase() {
-    /*abstract fun ApplicationDao(): ApplicationDao*/
+    abstract fun TopicDao(): TopicDao
+    abstract fun FolderDao(): FolderDao
+    abstract fun VocabularyDao(): VocabularyDao
     companion object {
         @Volatile
         private var INSTANCE: RoomDb? = null
