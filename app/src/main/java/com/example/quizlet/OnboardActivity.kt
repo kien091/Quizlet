@@ -1,19 +1,12 @@
 package com.example.quizlet
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.quizlet.adapter.ViewPagerAdapter
 import com.example.quizlet.databinding.ActivityOnboardBinding
-import com.squareup.picasso.Picasso
 
 class OnboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding
@@ -68,32 +61,3 @@ class OnboardActivity : AppCompatActivity() {
     }
 }
 
-class OnBoardData(val image: Int, val title: Int)
-class ViewPagerAdapter(
-    private val context: Context,
-    private val data: ArrayList<OnBoardData>
-) :
-    RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivOnboard = itemView.findViewById<ImageView>(R.id.iv_onboard)!!
-        val tvTitle = itemView.findViewById<TextView>(R.id.tv_title)!!
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(context).inflate(R.layout.item_viewpager2_onboard, parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-
-        Picasso.get().load(item.image).into(holder.ivOnboard)
-        holder.tvTitle.text = context.getString(item.title)
-    }
-
-}
