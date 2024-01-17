@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.example.quizlet.adapter.ViewPagerAdapter
@@ -28,7 +29,6 @@ class OnboardActivity : AppCompatActivity() {
         supportActionBar?.setLogo(R.drawable.quizlet_logo)
 
 
-
         // init onboarding screen and indicator
         val data = initData()
         val adapter = ViewPagerAdapter(this, data)
@@ -36,9 +36,17 @@ class OnboardActivity : AppCompatActivity() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.indicator.setViewPager(binding.viewPager)
 
+        handleStringRule()
 
-
-        // handle string rule
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+    }
+    // handle string rule
+    private fun handleStringRule(){
         val spannableString = SpannableString(resources.getString(R.string.rule))
 
         val termOfServiceClickableSpan = object : ClickableSpan() {
@@ -51,6 +59,11 @@ class OnboardActivity : AppCompatActivity() {
                 ds.isUnderlineText = false
                 ds.isFakeBoldText = true
                 ds.color = resources.getColor(R.color.text_color_2)
+                if(binding.tvRule.isPressed)
+                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, R.color.yellow_color)
+                else
+                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, android.R.color.transparent)
+                binding.tvRule.postInvalidate()
             }
         }
         val termOfServiceStart = resources.getString(R.string.rule).indexOf(resources.getString(R.string.terms_of_service))
@@ -58,6 +71,7 @@ class OnboardActivity : AppCompatActivity() {
         spannableString.setSpan(termOfServiceClickableSpan, termOfServiceStart, termOfServiceEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         val privacyPolicyClickableSpan = object : ClickableSpan() {
+
             override fun onClick(widget: View) {
                 // redirect to privacy policy
             }
@@ -67,21 +81,22 @@ class OnboardActivity : AppCompatActivity() {
                 ds.isUnderlineText = false
                 ds.isFakeBoldText = true
                 ds.color = resources.getColor(R.color.text_color_2)
+                if(binding.tvRule.isPressed)
+                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, R.color.yellow_color)
+                else
+                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, android.R.color.transparent)
+                binding.tvRule.postInvalidate()
             }
         }
         val privacyPolicyStart = resources.getString(R.string.rule).indexOf(resources.getString(R.string.privacy_policy))
         val privacyPolicyEnd = privacyPolicyStart + resources.getString(R.string.privacy_policy).length
         spannableString.setSpan(privacyPolicyClickableSpan, privacyPolicyStart, privacyPolicyEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+
         binding.tvRule.text = spannableString
         binding.tvRule.movementMethod = LinkMovementMethod.getInstance()
 
-        binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-        binding.btnRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
+
     }
 
     // init data for viewpager
