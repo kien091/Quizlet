@@ -2,22 +2,15 @@ package com.example.quizlet
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.TextPaint
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.example.quizlet.adapter.ViewPagerAdapter
 import com.example.quizlet.databinding.ActivityOnboardBinding
+import com.example.quizlet.except.Rule
 
-@Suppress("DEPRECATION")
 class OnboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +29,9 @@ class OnboardActivity : AppCompatActivity() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.indicator.setViewPager(binding.viewPager)
 
-        handleStringRule()
+        // handle with textview rule
+        Rule.getInstance().setTextView(binding.tvRule)
+        Rule.getInstance().init(binding.tvRule)
 
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -44,59 +39,6 @@ class OnboardActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-    }
-    // handle string rule
-    private fun handleStringRule(){
-        val spannableString = SpannableString(resources.getString(R.string.rule))
-
-        val termOfServiceClickableSpan = object : ClickableSpan() {
-            override fun onClick(widget: View) {
-                // redirect to term of service
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.isUnderlineText = false
-                ds.isFakeBoldText = true
-                ds.color = resources.getColor(R.color.text_color_2)
-                if(binding.tvRule.isPressed)
-                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, R.color.yellow_color)
-                else
-                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, android.R.color.transparent)
-                binding.tvRule.postInvalidate()
-            }
-        }
-        val termOfServiceStart = resources.getString(R.string.rule).indexOf(resources.getString(R.string.terms_of_service))
-        val termOfServiceEnd = termOfServiceStart + resources.getString(R.string.terms_of_service).length
-        spannableString.setSpan(termOfServiceClickableSpan, termOfServiceStart, termOfServiceEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        val privacyPolicyClickableSpan = object : ClickableSpan() {
-
-            override fun onClick(widget: View) {
-                // redirect to privacy policy
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.isUnderlineText = false
-                ds.isFakeBoldText = true
-                ds.color = resources.getColor(R.color.text_color_2)
-                if(binding.tvRule.isPressed)
-                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, R.color.yellow_color)
-                else
-                    binding.tvRule.highlightColor = ContextCompat.getColor(this@OnboardActivity, android.R.color.transparent)
-                binding.tvRule.postInvalidate()
-            }
-        }
-        val privacyPolicyStart = resources.getString(R.string.rule).indexOf(resources.getString(R.string.privacy_policy))
-        val privacyPolicyEnd = privacyPolicyStart + resources.getString(R.string.privacy_policy).length
-        spannableString.setSpan(privacyPolicyClickableSpan, privacyPolicyStart, privacyPolicyEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-
-        binding.tvRule.text = spannableString
-        binding.tvRule.movementMethod = LinkMovementMethod.getInstance()
-
-
     }
 
     // init data for viewpager
