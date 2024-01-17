@@ -32,4 +32,5 @@
     <color name="color_of_app">#4b5ae2</color>
     <color name="background_color_of_app">#f5f7f9</color>
     <color name="hint_color">#dadde4</color>
+    <color name="yellow_color">#fbd702</color>
 </resources>
