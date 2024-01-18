@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "644211755301",
+    "firebase_url": "https://quizlet-3205a-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "quizlet-3205a",
     "storage_bucket": "quizlet-3205a.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.quizlet"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "644211755301-ud96ckduhopfb7j6m51106j36emh2j96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quizlet",
+            "certificate_hash": "afddedd0042beddec80e71a7abe33d521f21572f"
+          }
+        },
+        {
+          "client_id": "644211755301-6tssvi92phteaovgdmn9bo3p17nn6adm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDuv5hRSm6R90GsT4Q3B2E9GG3PcAeLXzU"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644211755301-6tssvi92phteaovgdmn9bo3p17nn6adm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

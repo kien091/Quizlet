@@ -1,6 +1,5 @@
 package com.example.quizlet.except
 
-import android.annotation.SuppressLint
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextPaint
@@ -8,34 +7,17 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import com.example.quizlet.R
 
-class Rule{
+class Rule private constructor(){
     private lateinit var textView: TextView
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        private var instance: Rule? = null
-        fun getInstance(): Rule {
-            if (instance == null) {
-                instance = Rule()
-            }
-            return instance!!
-        }
-    }
-
-    fun setTextView(textView: TextView) {
-        this.textView = textView
-    }
-
-    fun init(textView: TextView) {
-        val rule = ContextCompat.getString(textView.context, R.string.rule)
-        val termOfService = ContextCompat.getString(textView.context, R.string.terms_of_service)
-        val privacyPolicy = ContextCompat.getString(textView.context, R.string.privacy_policy)
-        val textColor = ContextCompat.getColor(textView.context, R.color.text_color_2)
-        val highlightColor = ContextCompat.getColor(textView.context, R.color.yellow_color)
-        val transparentColor = ContextCompat.getColor(textView.context, android.R.color.transparent)
-
+    private lateinit var rule: String
+    private lateinit var termOfService: String
+    private lateinit var privacyPolicy: String
+    private var textColor: Int = 0
+    private var highlightColor: Int = 0
+    private var transparentColor: Int = 0
+    fun init() {
         val spannableString = SpannableString(rule)
 
         val termOfServiceClickableSpan = object : ClickableSpan() {
@@ -94,5 +76,84 @@ class Rule{
 
         textView.text = spannableString
         textView.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    @Suppress("DEPRECATION")
+    class Builder {
+        private val ruleInstance = Rule()
+
+        // set default value
+        init {
+            ruleInstance.rule = ""
+            ruleInstance.termOfService = ""
+            ruleInstance.privacyPolicy = ""
+            ruleInstance.textColor = 0
+            ruleInstance.highlightColor = 0
+            ruleInstance.transparentColor = 0
+        }
+
+        fun setTextView(textView: TextView): Builder {
+            ruleInstance.textView = textView
+            return this
+        }
+
+        fun setRule(rule: String): Builder {
+            ruleInstance.rule = rule
+            return this
+        }
+
+        fun setTermOfService(termOfService: String): Builder {
+            ruleInstance.termOfService = termOfService
+            return this
+        }
+
+        fun setPrivacyPolicy(privacyPolicy: String): Builder {
+            ruleInstance.privacyPolicy = privacyPolicy
+            return this
+        }
+
+        fun setTextColor(textColor: Int): Builder {
+            ruleInstance.textColor = textColor
+            return this
+        }
+
+        fun setHighlightColor(highlightColor: Int): Builder {
+            ruleInstance.highlightColor = highlightColor
+            return this
+        }
+
+        fun setTransparentColor(transparentColor: Int): Builder {
+            ruleInstance.transparentColor = transparentColor
+            return this
+        }
+
+        fun build(): Rule {
+            with(ruleInstance){
+                rule = if(ruleInstance.rule.isEmpty())
+                    ruleInstance.textView.context.getString(R.string.rule)
+                else rule
+
+                termOfService = if(ruleInstance.termOfService.isEmpty())
+                    ruleInstance.textView.context.getString(R.string.terms_of_service)
+                else termOfService
+
+                privacyPolicy = if(ruleInstance.privacyPolicy.isEmpty())
+                    ruleInstance.textView.context.getString(R.string.privacy_policy)
+                else privacyPolicy
+
+                textColor = if(ruleInstance.textColor == 0)
+                    ruleInstance.textView.context.resources.getColor(R.color.text_color_2)
+                else textColor
+
+                highlightColor = if(ruleInstance.highlightColor == 0)
+                    ruleInstance.textView.context.resources.getColor(R.color.yellow_color)
+                else highlightColor
+
+                transparentColor = if(ruleInstance.transparentColor == 0)
+                    ruleInstance.textView.context.resources.getColor(android.R.color.transparent)
+                else transparentColor
+            }
+            return ruleInstance
+        }
     }
 }

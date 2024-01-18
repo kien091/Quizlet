@@ -30,8 +30,10 @@ class OnboardActivity : AppCompatActivity() {
         binding.indicator.setViewPager(binding.viewPager)
 
         // handle with textview rule
-        Rule.getInstance().setTextView(binding.tvRule)
-        Rule.getInstance().init(binding.tvRule)
+        val rule = Rule.Builder()
+            .setTextView(binding.tvRule)
+            .build()
+        rule.init()
 
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
