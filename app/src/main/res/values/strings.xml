@@ -22,5 +22,10 @@
     <string name="nhap_mat_khau_cua_ban">Nhập mật khẩu của bạn</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="quen_ten_nguoi_dung_hoac_mat_khau">Quên tên người dùng hoặc mật khẩu?</string>
+
     <string name="default_web_client_id">644211755301-6tssvi92phteaovgdmn9bo3p17nn6adm.apps.googleusercontent.com</string>
+
+<!--    <string name="facebook_app_id">889945206065866</string>>-->
+<!--    <string name="fb_login_protocol_scheme">fb889945206065866</string>-->
+<!--    <string name="facebook_client_token">56789</string>-->
 </resources>
