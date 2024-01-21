@@ -10,12 +10,16 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.quizlet.adapter.ViewPagerAdapter
 import com.example.quizlet.databinding.ActivityOnboardBinding
 import com.example.quizlet.except.Rule
+import com.google.firebase.auth.FirebaseAuth
 
 class OnboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_onboard)
+
+        auth = FirebaseAuth.getInstance()
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -40,6 +44,16 @@ class OnboardActivity : AppCompatActivity() {
         }
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

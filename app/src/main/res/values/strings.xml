@@ -25,7 +25,7 @@
 
     <string name="default_web_client_id">644211755301-6tssvi92phteaovgdmn9bo3p17nn6adm.apps.googleusercontent.com</string>
 
-<!--    <string name="facebook_app_id">889945206065866</string>>-->
-<!--    <string name="fb_login_protocol_scheme">fb889945206065866</string>-->
-<!--    <string name="facebook_client_token">56789</string>-->
+    <string name="facebook_app_id">889945206065866</string>>
+    <string name="fb_login_protocol_scheme">fb889945206065866</string>
+    <string name="facebook_client_token">56789</string>
 </resources>
